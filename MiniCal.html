@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<head>
+    <title>Mini Calculator</title>
+    <link rel="stylesheet" href="MiniCal.css">
+    <script src="MiniCal.js"></script>
+    <h1>Mini Calculator</h1>
+</head>
+<body>
+    <form onsubmit="return getValue(document.getElementById('num1').value,document.getElementById('num2').value,document.getElementById('opt').value)">
+        <h2>Enter Number 1:</h2>
+        <input type="number" name="num1" size="20" id="num1"/>
+        <h2>Enter Number 2:</h2>
+        <input type="number" name="num2" size="20" id="num2"/>
+        <h2>Selec action to perform:</h2>
+        <h2>1. Addition 2. Substraction 3. Multiplication 4. Division 5. Index 6. Remainder</h2>
+        <input type="number" name="opt" size="20" id="opt"/>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
