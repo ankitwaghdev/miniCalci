@@ -1,0 +1,12 @@
+trigger triggerOnAccountToAvoidDuplicate on Account (before insert,before update) {
+    if(trigger.isBefore){
+        if(trigger.isInsert || trigger.isUpdate){
+            for(Account acc: trigger.new){
+                Integer countAcc = [Select Count() from Account where Name = :acc.Name];
+                if(countAcc >0){
+                    acc.addError('Cannot add Account with same name twice');
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+trigger mandetoryOnCase on Case (before insert,before update) {
+    if(trigger.isBefore){
+        if(trigger.isInsert || trigger.isUpdate){
+            for(Case cs:trigger.new){
+                if(cs.Subject==null || cs.Subject==''){
+                    cs.Subject.addError('Subject field is mandetory for saving a Case');
+                }
+                if(cs.SuppliedEmail==null || cs.SuppliedEmail==''){
+                    cs.SuppliedEmail.addError('Web Email field is mandetory for saving a Case');
+                }
+            }
+        }
+    }
+}

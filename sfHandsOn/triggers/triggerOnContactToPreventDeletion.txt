@@ -1,0 +1,11 @@
+trigger triggerOnContactToPreventDeletion on Contact (before delete) {
+    if(trigger.isBefore){
+        if(trigger.isDelete){
+            for(Contact con:trigger.new){
+                if(con.AccountId != null || con.AccountId != ''){
+                    con.addError('Can not delete contact having account associated.');
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+trigger triggerOnFaxAndPhone on Account (after update) {
+            List<Account> accList = [Select Id, Phone, Fax, (Select Id, Phone, Fax from Contacts) from Account where Id IN: trigger.newMap.Keyset()];
+            List<Contact> newContactLs = new List<Contact>();
+            if(!accList.isEmpty()){
+                for(Account acc:accList)
+                {
+                    if(!acc.Contacts.isEmpty()){
+                        for(Contact con: acc.Contacts){
+                            con.Phone = acc.Phone;
+                            con.Fax = acc.Fax;
+                            newContactLs.add(con);
+                        }
+                    }
+                }
+                update newContactLs;
+            }
+}

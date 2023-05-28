@@ -1,0 +1,20 @@
+trigger triggerOnLeadByStatus on Lead (before insert,before update) {
+    if(trigger.isBefore){
+        if(trigger.isInsert || trigger.isUpdate){
+            for(Lead ld:trigger.new){
+                if(ld.Rating=='Hot'){
+                    ld.NumberofLocations__c = 100;
+                }
+                else if(ld.Rating=='Warm'){
+                    ld.NumberofLocations__c = 200;
+                }
+                else if(ld.Rating=='Cold'){
+                    ld.NumberofLocations__c = 300;
+                }
+                else{
+                    ld.NumberofLocations__c = 50;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+trigger triggerOnOrderForContact on Order (before insert, before update) {
+    if(trigger.isBefore){
+        if(trigger.isInsert || trigger.isUpdate){
+            for(Order od:trigger.new){
+                if(od.BillToContactId==null || od.BillToContactId==''){
+                    od.addError('Contact is necessary for saving record');
+                }
+            }
+        }
+    }
+}

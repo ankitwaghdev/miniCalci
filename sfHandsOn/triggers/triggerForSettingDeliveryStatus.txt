@@ -1,0 +1,13 @@
+trigger triggerForSettingDeliveryStatus on Opportunity (before insert,before update) {
+    List<Opportunity> oppList= new List<Opportunity>();
+    if(trigger.isBefore){
+        if(trigger.isInsert || trigger.isUpdate){
+            for(Opportunity opp:trigger.new){
+                if(opp.StageName=='Prospecting'|| opp.StageName=='Qualification'){
+                    opp.DeliveryInstallationStatus__c = 'Yet to begin';
+                }
+            }
+        }
+        
+    }
+}

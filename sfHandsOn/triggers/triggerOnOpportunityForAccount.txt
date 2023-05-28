@@ -1,0 +1,18 @@
+trigger triggerOnOpportunityForAccount on Opportunity (after insert,after update) {
+    List<Account> acc = new List<Account>();
+    if(trigger.isAfter){
+        if(trigger.isInsert || trigger.isUpdate){
+            for(Opportunity opp:trigger.new){
+                if(opp.AccountId==null || opp.AccountId==''){
+                    Account ac = new Account();
+                    ac.Name = opp.Name;
+                    //opp.AccountId = ac.Id;
+                    acc.add(ac);
+                }
+            }
+            if(!acc.isEmpty()){
+                insert acc;
+            }
+        }
+    }
+}
