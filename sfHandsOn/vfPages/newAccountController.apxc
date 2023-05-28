@@ -1,0 +1,6 @@
+public class newAccountController {
+    public static List<Account> getNewAccount(){
+        List<Account> accList = [Select Id,Name from Account where Phone != null];
+            return accList;
+    }
+}

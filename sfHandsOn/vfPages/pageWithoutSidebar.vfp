@@ -1,0 +1,5 @@
+<apex:page sidebar="false">
+    <h1 style="color:red">
+        You are seeing a page without sidebar !
+    </h1>
+</apex:page>

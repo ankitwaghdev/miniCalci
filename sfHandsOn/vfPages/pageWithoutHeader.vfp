@@ -1,0 +1,5 @@
+<apex:page showHeader="false">
+    <h1 style="color:green">
+        You are seeing a page without header !
+    </h1>
+</apex:page>

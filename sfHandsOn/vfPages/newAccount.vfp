@@ -1,0 +1,8 @@
+<apex:page controller="newAccountController">
+    <apex:repeat var="acc" value="{!NewAccount}" >
+        <apex:outputLink value="/{!acc.Id}">
+            <apex:outputText value="{!acc.Name}"></apex:outputText>
+        </apex:outputLink>
+        <br/>
+    </apex:repeat>
+</apex:page>
