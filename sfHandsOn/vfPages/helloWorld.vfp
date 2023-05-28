@@ -1,0 +1,6 @@
+<apex:page >
+    <h1>
+        Hello mate,
+        Welcome to journey of visualforce !!
+    </h1>
+</apex:page>
